@@ -1,0 +1,65 @@
+.navbar{
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left:0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgb(164, 217, 164);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.store-name{
+    font-family: 'Roboto';
+    font-weight:400px;
+    font-size: 30px;
+    color: rgb(9, 78, 9)
+}
+
+.search-bar{
+    height: 25px;
+    width: 300px; 
+    border:0;
+    border-radius: 05px;
+    padding:4px;
+}
+
+.search-cart{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 400px; 
+}
+
+.btn{
+    width: 15%;
+    text-align: center;
+    font-family: 'Roboto';
+    background-color: transparent;
+    border: 0.5px solid;
+    height: 25px;
+    border-radius: 2px;
+}
+
+.search-icon {
+    position: absolute;
+    right: 10px; 
+    color: rgb(23, 23, 23); 
+  }
+.search-container{
+    position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.btn:hover {
+    background-color: #00b321d7; 
+}
+
+.logo{
+    height: 50px;
+    width: 50px;
+    border-radius:10px;
+}

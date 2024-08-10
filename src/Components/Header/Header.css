@@ -1,0 +1,17 @@
+.title{
+   text-align: center;
+   font-family: 'serif';
+   color:rgb(13, 93, 13);
+   font-weight: 900;
+   /* padding:100px; */
+}
+.decsription{
+   text-align: center;
+   font-family: 'serif';
+   color:rgb(13, 93, 13);
+   font-weight: bold;
+}
+
+.title-sale{
+   padding-top: 80px;
+}

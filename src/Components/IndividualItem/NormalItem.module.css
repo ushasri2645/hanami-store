@@ -1,0 +1,70 @@
+.item{
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    position: relative;
+}
+.itemimage{
+    height: 350px;
+    width: 250px;
+    border-radius: 10px;
+}
+.item:hover{
+    transform: scale(1.01);
+}
+.wishlist{
+    background-color: rgb(1, 52, 1);
+    height:30px;
+    width:100px;
+    border:0;
+    border-radius: 3px;
+    color:white;
+    font-weight: bold;
+}
+
+.wishlist:hover{
+    background-color: rgb(51, 87, 51);
+}
+.statusbtn{
+    display: flex;
+    justify-content: center;
+}
+.badge{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: red;
+  border-top-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+  color: #fff;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.name{
+    font-family: serif;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.overlay{
+    opacity: 0.6;
+}
+
+.notifyme{
+    background-color:grey;
+    height:30px;
+    width:100px;
+    border:0;
+    border-radius: 3px;
+    color:white;
+    font-weight: bold;
+}
+
+.pricerating{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
