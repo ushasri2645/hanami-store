@@ -58,7 +58,8 @@
 .pricerating{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 6%;
 }
 
 
@@ -70,7 +71,7 @@
     color: #fff;
     padding: 5px 10px;
     border-top-right-radius: 12px;
-    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
     font-size: 14px;
     font-weight: bold;
   }
