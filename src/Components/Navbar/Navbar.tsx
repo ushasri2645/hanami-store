@@ -15,7 +15,7 @@ const Navbar = () => {
                 <input className='search-bar' placeholder='Search item'/>
                 <SlMagnifier className="search-icon"/>
             </div>
-            <CiShoppingCart size={34} className=""/>
+            <CiShoppingCart size={34} className="cart-icon"/>
             <button className="btn">Login</button>
         </div>
       </nav>
