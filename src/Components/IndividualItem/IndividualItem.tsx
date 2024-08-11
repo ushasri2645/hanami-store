@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react'
 import salesStyles from './SaleItem.module.css'
 import normalStyles from './NormalItem.module.css'
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import { TItem } from '../../Types/ItemType'
-import { Method } from '@testing-library/react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { TItem } from '../../Types/ItemType';
 
 const IndividualItem = ({item, cartUpdate}:{ item:TItem,cartUpdate:Function}) => {
     const styles = item.offer ? salesStyles : normalStyles
     const [isClickedHeart, setIsClickedHeart]  = useState(false);
     const [isClickedCart, setIsClickedCart] = useState(false);
+    const [isClickNotify, setIsClickNotify] = useState(false);
 
     const toggleHeart = () => {;
         setIsClickedHeart(!isClickedHeart);
@@ -17,6 +19,12 @@ const IndividualItem = ({item, cartUpdate}:{ item:TItem,cartUpdate:Function}) =>
     const toggleCart = () => {
         setIsClickedCart(!isClickedCart);
     }
+
+    const toggleNotify = () => {
+        setIsClickNotify(!isClickNotify)
+        toast.success("Received request")
+    }
+
     useEffect(()=>{
         if(isClickedCart){
             cartUpdate(1);
@@ -27,7 +35,9 @@ const IndividualItem = ({item, cartUpdate}:{ item:TItem,cartUpdate:Function}) =>
     },[isClickedCart])
 
     return (
+        
         <div className={!item.isAvailable ? styles.overlay : ''}>
+            <ToastContainer position="bottom-right" autoClose={3000} theme="light" pauseOnHover />
             <div className={styles.item}>
                 {item.isNew && <span className={styles.badge}>New</span>}
                 <img className={styles.itemimage} src={item.image} />
@@ -48,7 +58,20 @@ const IndividualItem = ({item, cartUpdate}:{ item:TItem,cartUpdate:Function}) =>
                         </div>
                     ) : (
                         <div className={styles.statusbtn}>
-                            <button className={item.isAvailable ? styles.wishlist : styles.notifyme}>{item.isAvailable ? "Add to Cart" : "Notify Me"}</button>
+                            <div className={normalStyles.hearticon} onClick={toggleHeart}>
+                                {isClickedHeart?<AiFillHeart color='red' size={25}/>:<AiOutlineHeart color='black' size={25}/>}
+                            </div>
+                            <button disabled={isClickNotify} className={item.isAvailable ? styles.wishlist : styles.notifyme}>
+                                {item.isAvailable ? 
+                                    (<p onClick={toggleCart}>{!isClickedCart?"Add to Cart":"Remove From Cart"}</p>) 
+                                    : 
+                                    (
+                                    // <p onClick={()=>{toggleNotify(); toast.success("Recieved")}}>Notify Me</p>
+                                    <p onClick={toggleNotify}>Notify Me</p>
+                                    )
+                                    
+                                }
+                            </button>
                         </div>
                     )}
                 </div>

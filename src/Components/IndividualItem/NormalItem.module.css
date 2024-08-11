@@ -1,3 +1,6 @@
+.Toastify__toast-container {
+    z-index: 1000;  /* or higher if necessary */
+}
 .item{
     margin: 20px;
     display: flex;
@@ -14,6 +17,9 @@
     transform: scale(1.01);
 }
 .wishlist{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: rgb(1, 52, 1);
     height:30px;
     width:100px;
@@ -28,7 +34,7 @@
 }
 .statusbtn{
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 .badge{
   position: absolute;
@@ -49,18 +55,21 @@
     text-align: center;
 }
 
-.overlay{
+/* .overlay{
     opacity: 0.6;
-}
+}  */
 
 .notifyme{
-    background-color:grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:rgb(211, 211, 211);
     height:30px;
     width:100px;
     border:0;
     border-radius: 3px;
-    color:white;
-    font-weight: bold;
+    
+    cursor: pointer;
 }
 
 .pricerating{
@@ -69,7 +78,9 @@
     justify-content:center;
     gap:6%;
 }
-
 .hearticon :hover{
  cursor: pointer;
 }
+
+
+
