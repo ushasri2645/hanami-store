@@ -55,9 +55,9 @@
     text-align: center;
 }
 
-/* .overlay{
+.overlay{
     opacity: 0.6;
-}  */
+} 
 
 .notifyme{
     display: flex;
