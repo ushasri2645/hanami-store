@@ -69,3 +69,7 @@
     justify-content:center;
     gap:6%;
 }
+
+.hearticon :hover{
+ cursor: pointer;
+}
