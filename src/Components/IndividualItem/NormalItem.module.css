@@ -1,6 +1,4 @@
-.Toastify__toast-container {
-    z-index: 1000;  /* or higher if necessary */
-}
+
 .item{
     margin: 20px;
     display: flex;

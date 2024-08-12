@@ -3,7 +3,7 @@ import salesStyles from './SaleItem.module.css'
 import normalStyles from './NormalItem.module.css'
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css'; 
 import { TItem } from '../../Types/ItemType';
 
 const IndividualItem = ({item, cartUpdate}:{ item:TItem,cartUpdate:Function}) => {
@@ -14,15 +14,31 @@ const IndividualItem = ({item, cartUpdate}:{ item:TItem,cartUpdate:Function}) =>
 
     const toggleHeart = () => {;
         setIsClickedHeart(!isClickedHeart);
+        if(!isClickedHeart){
+            toast.success("Added to Wish List");
+        }
+        else{
+            toast.error("Removed from Wish List");
+        }
     }
 
     const toggleCart = () => {
         setIsClickedCart(!isClickedCart);
+        if(!isClickedCart){
+            toast.success("Added to cart");
+        }
+        else{
+            toast.error("Removed from cart");
+        }
     }
 
     const toggleNotify = () => {
-        setIsClickNotify(!isClickNotify)
-        toast.success("Received request")
+        try {
+            setIsClickNotify(!isClickNotify);
+            toast.success("Received request");
+        } catch (error) {
+            console.error("Error in toggleNotify:", error);
+        }
     }
 
     useEffect(()=>{
@@ -37,7 +53,7 @@ const IndividualItem = ({item, cartUpdate}:{ item:TItem,cartUpdate:Function}) =>
     return (
         
         <div className={!item.isAvailable ? styles.overlay : ''}>
-            <ToastContainer position="bottom-right" autoClose={3000} theme="light" pauseOnHover />
+           
             <div className={styles.item}>
                 {item.isNew && <span className={styles.badge}>New</span>}
                 <img className={styles.itemimage} src={item.image} />
@@ -66,8 +82,8 @@ const IndividualItem = ({item, cartUpdate}:{ item:TItem,cartUpdate:Function}) =>
                                     (<p onClick={toggleCart}>{!isClickedCart?"Add to Cart":"Remove From Cart"}</p>) 
                                     : 
                                     (
-                                    // <p onClick={()=>{toggleNotify(); toast.success("Recieved")}}>Notify Me</p>
-                                    <p onClick={toggleNotify}>Notify Me</p>
+                                    <p onClick={()=>{toggleNotify()}}>Notify Me</p>
+                                    // <p onClick={toggleNotify}>Notify Me</p>
                                     )
                                     
                                 }
