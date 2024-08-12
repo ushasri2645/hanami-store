@@ -33,4 +33,6 @@ Instructions to install and Run the project
     http://localhost:3000
     ```
 
+# DEMO
 
+![UI Image](image.png)
