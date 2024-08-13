@@ -1,5 +1,5 @@
 export type TItem = {
-    id:number,
+    id:number;
     name: string,
     image: string,
     price: number,

@@ -9,18 +9,46 @@ import './Home.css'
 
 const Home = () => {
   const [cartCount, setCartCount] = useState(0);
-  const [cart,setCart] = useState<number[]>([]);
-  console.log("Hi",cart)
+  const [cart, setCart] = useState<number[]>([]);
+  const [notifiedItems, setNotifiedItems] = useState<number[]>([])
+  const [wishListedItems, setwishListedItems] = useState<number[]>([])
+
   const cartUpdate = (i: number) => {
     setCart((prevCart) => {
-      if (prevCart.findIndex(ele=>ele===i)!==-1) {
-        console.log("itemn there")
-        return prevCart; 
+      if (prevCart.findIndex(ele => ele === i) !== -1) {
+        return prevCart;
       }
-      setCartCount(cartCount+1);
+      setCartCount(cartCount + 1);
       return [...prevCart, i];
     });
   };
+
+  const updateWishList = (id: number, task: number) => {
+    setwishListedItems((prevList) => {
+      if (task === 1) {
+        if (prevList.findIndex(ele => ele === id) !== -1) {
+          return prevList;
+        }
+        return [...prevList, id];
+      }
+      else {
+        return (prevList.filter(item => item !== id))
+      }
+      
+    })
+  }
+  console.log("hello",wishListedItems)
+  console.log("cart",cart);
+  const updateNotifiedItems = (id: number) => {
+    setNotifiedItems((prevList) => {
+      if (prevList.findIndex(ele => ele === id) !== -1) {
+        return prevList;
+      }
+      return [...prevList, id];
+
+    })
+  }
+
   const [queryResults, setQueryResults] = useState<TItem[]>([]);
   const updateResults = (searchQuery: string) => {
     console.log(process.env.sales);
@@ -30,6 +58,8 @@ const Home = () => {
       )
     );
   };
+
+
   return (
     <div>
       <ToastContainer
@@ -43,8 +73,8 @@ const Home = () => {
         cartUpdate={cartUpdate}
         updateResults={updateResults}
       />
-      <Items title="Exclusive Sale" offer={true} cartUpdate={cartUpdate} data={queryResults} />
-      <Items cartUpdate={cartUpdate} data={queryResults} />
+      <Items title="Exclusive Sale" offer={true} cartUpdate={cartUpdate} data={queryResults} updateNotifiedItems={updateNotifiedItems} notifiedItems={notifiedItems} wishListedItems={wishListedItems} updateWishList={updateWishList} />
+      <Items cartUpdate={cartUpdate} data={queryResults} updateNotifiedItems={updateNotifiedItems} notifiedItems={notifiedItems} wishListedItems={wishListedItems} updateWishList={updateWishList} />
     </div>
   );
 };

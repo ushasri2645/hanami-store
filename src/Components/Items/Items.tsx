@@ -9,11 +9,19 @@ const Items = ({
   title="Our Products",
   cartUpdate,
   data,
+  notifiedItems,
+  updateWishList,
+  wishListedItems,
+  updateNotifiedItems,
 }: {
   offer?: boolean;
   title?:string;
   cartUpdate: Function;
   data: TItem[];
+  updateNotifiedItems:Function;
+  updateWishList:Function;
+  wishListedItems:number[];
+  notifiedItems:any
 }) => {
   console.log(data);
   const toastmsg = () => {
@@ -38,8 +46,8 @@ const Items = ({
     <div className="items-container">
     
     <p>{process.env.REACT_APP_SALES}</p>
-      {items.map((item:TItem,index:number) => (
-        <Item item={item} key={index} cartUpdate={cartUpdate} />
+      {items.map((item:TItem) => (
+        <Item item={item} cartUpdate={cartUpdate} updateNotifiedItems={updateNotifiedItems} notifiedItems={notifiedItems} wishListedItems={wishListedItems} updateWishList={updateWishList}/>
       ))}
     </div>
     </>
