@@ -1,6 +1,4 @@
-import React from 'react';
-import logo from './logo.svg';
-import Home from './Components/Home';
+import Home from './Home/Home';
 
 function App() {
   return (

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import salesStyles from './SaleItem.module.css'
-import normalStyles from './NormalItem.module.css'
+import normalStyles from './Item.module.css'
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
