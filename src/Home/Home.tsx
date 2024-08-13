@@ -1,11 +1,10 @@
 import { useState } from "react";
 import Navbar from "../Components/Navbar/Navbar";
-import Header from "../Components/Header/Header";
 import Items from "../Components/Items/Items";
 import { data } from "../Data/Data";
 import { TItem } from "../Types/ItemType";
-import { ToastContainer, toast } from "react-toastify";
-import './Home.css'
+import { ToastContainer} from "react-toastify";
+
 
 const Home = () => {
   const [cartCount, setCartCount] = useState(0);
@@ -34,11 +33,9 @@ const Home = () => {
       else {
         return (prevList.filter(item => item !== id))
       }
-      
     })
   }
-  console.log("hello",wishListedItems)
-  console.log("cart",cart);
+
   const updateNotifiedItems = (id: number) => {
     setNotifiedItems((prevList) => {
       if (prevList.findIndex(ele => ele === id) !== -1) {
@@ -70,11 +67,23 @@ const Home = () => {
       />
       <Navbar
         cartCount={cartCount}
-        cartUpdate={cartUpdate}
         updateResults={updateResults}
-      />
-      <Items title="Exclusive Sale" offer={true} cartUpdate={cartUpdate} data={queryResults} updateNotifiedItems={updateNotifiedItems} notifiedItems={notifiedItems} wishListedItems={wishListedItems} updateWishList={updateWishList} />
-      <Items cartUpdate={cartUpdate} data={queryResults} updateNotifiedItems={updateNotifiedItems} notifiedItems={notifiedItems} wishListedItems={wishListedItems} updateWishList={updateWishList} />
+      />  
+      <Items 
+        title="Exclusive Sale" 
+        offer={true} 
+        cartUpdate={cartUpdate} 
+        data={queryResults} 
+        updateNotifiedItems={updateNotifiedItems} 
+        notifiedItems={notifiedItems} 
+        wishListedItems={wishListedItems} 
+        updateWishList={updateWishList} />
+      <Items cartUpdate={cartUpdate} 
+        data={queryResults} 
+        updateNotifiedItems={updateNotifiedItems} 
+        notifiedItems={notifiedItems} 
+        wishListedItems={wishListedItems} 
+        updateWishList={updateWishList} />
     </div>
   );
 };

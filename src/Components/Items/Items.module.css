@@ -1,4 +1,4 @@
-.items-container{
+.itemsContainer{
     display:flex;
     flex-wrap:wrap;
     align-items: center;
@@ -14,7 +14,7 @@
     font-weight: 900;
     /* padding:30px; */
  }
- .decsription{
+ .description{
     text-align: center;
     font-family: 'serif';
     color:rgb(13, 93, 13);
