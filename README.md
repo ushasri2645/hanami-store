@@ -2,9 +2,28 @@
 
 This is Web App of Hanami Store.
 
+## Features
+
+* Search functionality for products.
+* Cart management.
+* Can add products to Wishlist. 
+* Toast notifications.
+
+## Technologies Used
+
+* React
+* TypeScript
+* `react-toastify` for notifications
+* CSS Modules for styling.
+
 ## Installation
 
-Instructions to install and Run the project
+### Prerequisites
+
+* Node.js (version 18 or later)
+* npm (version 8 or later)
+
+### Set up
 
 1. Clone the repository:
     ```
