@@ -1,5 +1,4 @@
-import React from "react";
-import "./Items.css";
+import styles from "./Items.module.css";
 import { TItem } from "../../Types/ItemType";
 import Item from "../Item/Item";
 import { toast } from "react-toastify";
@@ -40,10 +39,10 @@ const Items = ({
   return (
     <>
     <div>
-          <h1 className='title title-sale'>{title}</h1>
-          {title!=='Our Products' && (<p className='decsription'>Get in on the trend with our curated selection of best-selling styles</p>)}
+          <h1 className={styles.title}>{title}</h1>
+          {title!=='Our Products' && (<p className={styles.description}>Get in on the trend with our curated selection of best-selling styles</p>)}
         </div>
-    <div className="items-container">
+    <div className={styles.itemsContainer}>
     
     <p>{process.env.REACT_APP_SALES}</p>
       {items.map((item:TItem) => (

@@ -38,6 +38,11 @@ const IndividualItem = ({
         }
     };
 
+    const handleCart = () => {
+        setIsAddedToCart(!isAddedToCart);
+        cartUpdate(item.id);
+        toast.success("Added to Cart");
+    }
     const updateNotificationStatus = () => {
         setIsNotified(true);
         toast.success("Received request");
@@ -70,11 +75,7 @@ const IndividualItem = ({
                                 )}
                             </div>
                             <button
-                                onClick={() => {
-                                    setIsAddedToCart(!isAddedToCart);
-                                    cartUpdate(item.id);
-                                    toast.success("Added to Cart");
-                                }}
+                                onClick={handleCart}
                                 className={styles.wishlist}
                             >
                                 Add to Cart
