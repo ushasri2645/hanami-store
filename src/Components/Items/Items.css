@@ -7,3 +7,17 @@
     margin-right:5%;
     justify-content: space-evenly;
 }
+.title{
+    text-align: center;
+    font-family: 'serif';
+    color:rgb(13, 93, 13);
+    font-weight: 900;
+    /* padding:30px; */
+ }
+ .decsription{
+    text-align: center;
+    font-family: 'serif';
+    color:rgb(13, 93, 13);
+    font-weight: bold;
+ }
+ 

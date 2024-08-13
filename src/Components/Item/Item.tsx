@@ -6,49 +6,26 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
 import { TItem } from '../../Types/ItemType';
 
-const IndividualItem = ({item, cartUpdate}:{ item:TItem,cartUpdate:Function}) => {
+const IndividualItem = ({item,key, cartUpdate}:{ item:TItem,key:number,cartUpdate:Function}) => {
     const styles = item.offer ? salesStyles : normalStyles
     const [isClickedHeart, setIsClickedHeart]  = useState(false);
-    const [isClickedCart, setIsClickedCart] = useState(false);
-    const [isClickNotify, setIsClickNotify] = useState(false);
+    const [isAddedToCart, setIsAddedToCart] = useState(false);
+    const [isNotified, setIsNotified] = useState(false);
 
-    const toggleHeart = () => {;
-        setIsClickedHeart(!isClickedHeart);
+    const toggleHeart = () => {
         if(!isClickedHeart){
             toast.success("Added to Wish List");
         }
         else{
             toast.error("Removed from Wish List");
         }
+        setIsClickedHeart(!isClickedHeart);
     }
 
-    const toggleCart = () => {
-        setIsClickedCart(!isClickedCart);
-        if(!isClickedCart){
-            toast.success("Added to cart");
-        }
-        else{
-            toast.error("Removed from cart");
-        }
+    const updateNotificationStatus = () => {
+        setIsNotified(true);
+        toast.success("Received request");
     }
-
-    const toggleNotify = () => {
-        try {
-            setIsClickNotify(!isClickNotify);
-            toast.success("Received request");
-        } catch (error) {
-            console.error("Error in toggleNotify:", error);
-        }
-    }
-
-    useEffect(()=>{
-        if(isClickedCart){
-            cartUpdate(1);
-        }
-        else{
-            cartUpdate(-1);
-        }
-    },[isClickedCart])
 
     return (
         
@@ -70,20 +47,19 @@ const IndividualItem = ({item, cartUpdate}:{ item:TItem,cartUpdate:Function}) =>
                             <div className={normalStyles.hearticon} onClick={toggleHeart}>
                                 {isClickedHeart?<AiFillHeart color='red' size={25}/>:<AiOutlineHeart color='black' size={25}/>}
                             </div>
-                            <button onClick={toggleCart} className={styles.wishlist}>{!isClickedCart?"Add to Cart":"Remove From Cart"}</button>
+                            <button onClick={()=>{setIsAddedToCart(!isAddedToCart);cartUpdate(item.id);toast.success("Added to Cart")}} className={styles.wishlist}>{isAddedToCart?"Added":"Add to Cart"}</button>
                         </div>
                     ) : (
                         <div className={styles.statusbtn}>
                             <div className={normalStyles.hearticon} onClick={toggleHeart}>
                                 {isClickedHeart?<AiFillHeart color='red' size={25}/>:<AiOutlineHeart color='black' size={25}/>}
                             </div>
-                            <button disabled={isClickNotify} className={item.isAvailable ? styles.wishlist : styles.notifyme}>
+                            <button disabled={isNotified} className={item.isAvailable ? styles.wishlist : styles.notifyme}>
                                 {item.isAvailable ? 
-                                    (<p onClick={toggleCart}>{!isClickedCart?"Add to Cart":"Remove From Cart"}</p>) 
+                                    (<p onClick={()=>{setIsAddedToCart(!isAddedToCart);cartUpdate(item.id);toast.success("Added to Cart")}}>{"Add to Cart"}</p>) 
                                     : 
                                     (
-                                    <p onClick={()=>{toggleNotify()}}>Notify Me</p>
-                                    // <p onClick={toggleNotify}>Notify Me</p>
+                                    <p onClick={()=>{updateNotificationStatus()}}>Notify Me</p>
                                     )
                                     
                                 }
