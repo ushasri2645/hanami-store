@@ -54,4 +54,4 @@ This is Web App of Hanami Store.
 
 # DEMO
 
-![UI Image](image.png)
+![UI Image](<public/assests/image.png>)
