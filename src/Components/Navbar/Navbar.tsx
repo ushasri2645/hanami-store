@@ -20,7 +20,7 @@ const Navbar = ({
     return (
         <div>
             <nav className={styles.navbar}>
-                <img className={styles.logo} src="./logo.jpg" />
+                <img className={styles.logo} src="./assests/logo.jpg" />
                 <h1 className={styles.storeName}>Hanami</h1>
                 <div className={styles.searchCart}>
                     <div className={styles.searchContainer}>
