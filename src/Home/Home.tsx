@@ -9,11 +9,20 @@ import { ToastContainer} from "react-toastify";
 const Home = () => {
   const [queryResults, setQueryResults] = useState<TItem[]>([]);
   const updateResults = (searchQuery: string) => {
-    setQueryResults(
-      data.filter((item) =>
-        item.name.toLowerCase().includes(searchQuery.toLowerCase())
-      )
-    );
+    fetch('http://localhost:5050/api/items')
+      .then(response => response.json())
+      .then((data: TItem[]) => {
+        console.log(data);
+        const filteredResults = data.filter((item) =>
+          item.name.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+        setQueryResults(filteredResults);
+      });
+    // setQueryResults(
+    //   data.filter((item) =>
+    //     item.name.toLowerCase().includes(searchQuery.toLowerCase())
+    //   )
+    // );
   };
 
 
