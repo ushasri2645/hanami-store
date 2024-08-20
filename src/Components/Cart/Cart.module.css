@@ -1,0 +1,33 @@
+/* Cart.module.css */
+.cartContainer {
+    padding: 20px;
+}
+
+.cartItem {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.itemImage {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.itemDetails {
+    flex: 1;
+}
+
+.cartTotal {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.quantityControls{
+    display: flex;
+    flex-direction: row;
+    
+}
