@@ -2,12 +2,15 @@ import { useContext, useEffect, useState } from "react";
 import styles from "./Navbar.module.css";
 import { CiShoppingCart } from "react-icons/ci";
 import { SlMagnifier } from "react-icons/sl";
+import { FaUser } from 'react-icons/fa'
 import { CartContext } from "../../Context/Context";
+import {useNavigate} from "react-router-dom"
 const Navbar = ({
     updateResults,
 }: {
     updateResults: Function;
 }) => {
+    const navigate = useNavigate()
     const cartContext = useContext(CartContext) 
    
     const [searchTerm, setSearchTerm] = useState("");
@@ -39,9 +42,10 @@ const Navbar = ({
                     </div>
                     <div className={styles.cart}>
                         <span className={styles.badge}>{cart.length}</span>
-                        <CiShoppingCart size={34} className={styles.cartIcon} />
+                        <CiShoppingCart onClick={ ()=>{navigate('/cart')}}size={34} className={styles.cartIcon} />
                     </div>
                     <button className={styles.btn}>Login</button>
+                    <FaUser size={30}/>
                 </div>
             </nav>
         </div>
