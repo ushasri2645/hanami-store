@@ -6,5 +6,6 @@ export type TItem = {
     rating: number,
     isAvailable: boolean,
     isNew?:boolean,
-    offer?:number
+    offer?:number,
+    sizes: { [key: string]: number };
 }
