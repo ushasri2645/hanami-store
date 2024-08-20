@@ -8,12 +8,15 @@ import { TItem } from "../../Types/ItemType";
 import { CartContext } from "../../Context/Context";
 import { WishListContext } from "../../Context/Context";
 import { NotificationContext } from "../../Context/Context";
+import { useNavigate } from 'react-router-dom';
+
 
 const IndividualItem = ({
     item,
 }: {
     item: TItem;
 }) => {
+    const navigate = useNavigate()
     const styles = item.offer ? salesStyles : normalStyles;
     const [isClickedHeart, setIsClickedHeart] = useState(false);
 
@@ -43,6 +46,7 @@ const IndividualItem = ({
     };
 
     const handleCart = () => {
+
         dispatch({ type: "ADD_TO_CART", item: item });
         toast.success("Added to Cart");
     };
@@ -51,14 +55,12 @@ const IndividualItem = ({
         Notificationdispatch({type:"NOTIFY",id:item.id})
 
     };
-    const openUrl = () => {
-        window.open("https://www.rgukt.ac.in/", "_blank");
-    };
+
     return (
         <div className={!item.isAvailable ? styles.overlay : ""}>
             <div className={styles.item}>
                 {item.isNew && <span className={styles.badge}>New</span>}
-                <img className={styles.itemimage} src={item.image} />
+                <img onClick={()=>{navigate(`/product/${item.id}`)}} className={styles.itemimage} src={item.image} />
                 <div className={styles.bottomsection}>
                     <p className={styles.name}>{item.name}</p>
                     <div className={styles.pricerating}>
@@ -82,22 +84,20 @@ const IndividualItem = ({
                                     <AiOutlineHeart color="black" size={25} />
                                 )}
                             </div>
-                            <button
-                                onClick={handleCart}
-                                className={styles.wishlist}
-                            >
+                            <button className={styles.wishlist}>
                                 {cart.findIndex((i) => i.id === item.id) !==
-                                -1 ? (
+                                -1 ? 
                                     <p
                                         onClick={() => {
-                                            openUrl();
+                                            navigate('/cart');
                                         }}
                                     >
                                         Go to Cart
                                     </p>
-                                ) : (
-                                    "Add to Cart"
-                                )}
+                                 : 
+                                    <p onClick={handleCart}>Add to Cart</p>
+                                    
+                                }
                             </button>
                         </div>
                     ) : (
@@ -124,21 +124,18 @@ const IndividualItem = ({
                                 }
                             >
                                 {item.isAvailable ? (
-                                    <p
-                                        onClick={() => {
-                                            dispatch({
-                                                type: "ADD_TO_CART",
-                                                item: item,
-                                            });
-
-                                            toast.success("Added to Cart");
-                                        }}
-                                    >
+                                    <p>
                                         {cart.findIndex(
                                             (i) => i.id === item.id
                                         ) !== -1
-                                            ? "Go to Cart"
-                                            : "Add to Cart"}
+                                            ? ( <p
+                                                onClick={() => {
+                                                    navigate('/cart');
+                                                }}
+                                            >
+                                                Go to Cart
+                                            </p>)
+                                            : <p onClick={handleCart}>Add to Cart</p>}
                                     </p>
                                 ) : (
                                     <p
