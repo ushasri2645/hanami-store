@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./Navbar.module.css";
 import { CiShoppingCart } from "react-icons/ci";
 import { SlMagnifier } from "react-icons/sl";
-
+import { CartContext } from "../../Context/Context";
 const Navbar = ({
-    cartCount,
     updateResults,
 }: {
-    cartCount: number;
     updateResults: Function;
 }) => {
+    const cartContext = useContext(CartContext) 
+   
     const [searchTerm, setSearchTerm] = useState("");
     const handleSearch = (event: any) => {
         setSearchTerm(event.target.value);
@@ -17,6 +17,10 @@ const Navbar = ({
     useEffect(() => {
         updateResults(searchTerm);
     }, [searchTerm]);
+    if(!cartContext){
+        return <></>
+    }
+    const {cart} = cartContext;
     return (
         <div>
             <nav className={styles.navbar}>
@@ -34,7 +38,7 @@ const Navbar = ({
                         <SlMagnifier className={styles.searchIcon} />
                     </div>
                     <div className={styles.cart}>
-                        <span className={styles.badge}>{cartCount}</span>
+                        <span className={styles.badge}>{cart.length}</span>
                         <CiShoppingCart size={34} className={styles.cartIcon} />
                     </div>
                     <button className={styles.btn}>Login</button>
