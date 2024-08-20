@@ -1,0 +1,123 @@
+.productContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #F5F5F5; 
+    border-radius: 8px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.topSection {
+    display: flex;
+    justify-content: center;
+    gap:10%;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.image {
+    width: 350px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    max-width: 50%;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333; /* Dark text color for product name */
+}
+
+h4 {
+    font-size: 20px;
+    color: #777; /* Slightly lighter color for price and rating */
+}
+
+.sizes {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.sizeButton {
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sizeButton.selected {
+    background-color: #4CAF50; /* Green background for selected size */
+    color: #fff;
+}
+
+.sizeButton:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+.buttonWishList {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.wishlist {
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.wishlist:hover {
+    background-color: #45a049;
+}
+
+.statusbtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hearticon {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.hearticon:hover {
+    transform: scale(1.1);
+}
+
+.description {
+    /* background-color: #fff; */
+    padding: 20px;
+    border-radius: 8px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    width: 100%;
+}
+
+.description h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.description p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #555;
+}
