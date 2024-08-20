@@ -9,7 +9,8 @@ export var data: TItem[]=[
         rating: 4.4,
         isAvailable: true,
         isNew:true,
-        offer:30
+        offer:30,
+        sizes: { S: 0, M: 0,L:1,XL:2,XXL:3 }
     },
     {
         id:2,
@@ -18,7 +19,8 @@ export var data: TItem[]=[
         price: 80.90,
         rating: 4.6,
         isAvailable: true,
-        offer:40
+        offer:40,
+        sizes: { S: 2, M: 3,L:1,XL:2,XXL:3 }
     },
     {
         id:3,
@@ -27,7 +29,8 @@ export var data: TItem[]=[
         price: 35.60,
         rating: 4.6,
         isAvailable: true,
-        offer:25
+        offer:25,
+        sizes: { S: 2, M: 3,L:1,XL:2,XXL:3 }
     },
     {
         id:4,
@@ -36,6 +39,7 @@ export var data: TItem[]=[
         price: 45.80,
         rating: 4.8,
         isAvailable: true,
+        sizes: { S: 2, M: 3,L:1,XL:2,XXL:3 }
 
     },
     {
@@ -45,6 +49,7 @@ export var data: TItem[]=[
         price: 55.30,
         rating: 4.7,
         isAvailable: true,
+        sizes: { S: 2, M: 3,L:1,XL:2,XXL:3 }
     },
     {
         id:6,
@@ -53,6 +58,7 @@ export var data: TItem[]=[
         price: 75.60,
         rating: 4.6,
         isAvailable: false,
+        sizes: { S: 0, M: 0,L:0,XL:0,XXL:0 }
     },
     {
         id:7,
@@ -61,6 +67,7 @@ export var data: TItem[]=[
         price: 65.99,
         rating: 4.4,
         isAvailable: false,
+        sizes: { S: 0, M: 0,L:0,XL:0,XXL:0 }
     },
     {
         id:8,
@@ -70,6 +77,7 @@ export var data: TItem[]=[
         rating: 4.2,
         isNew:true,
         isAvailable: true,
+        sizes: { S: 2, M: 3,L:1,XL:2,XXL:3 }
     },
     {
         id:9,
@@ -78,6 +86,7 @@ export var data: TItem[]=[
         price: 38.90,
         rating: 4.5,
         isAvailable: true,
+        sizes: { S: 2, M: 3,L:1,XL:2,XXL:3 }
     },
     {
         id:10,
@@ -86,13 +95,16 @@ export var data: TItem[]=[
         price: 40.40,
         rating: 4.6,
         isAvailable: true,
+        sizes: { S: 2, M: 3,L:1,XL:2,XXL:3 }
     },
     {
-        id:10,
+        id:11,
         name: 'Beautiful Causual Wear',
         image:'https://img.freepik.com/free-photo/beautiful-girl-street_1157-4696.jpg?t=st=1723175771~exp=1723179371~hmac=a1287f01208bb679a57d80294923e83d573ec71df55625fd985368f1624fd2f0&w=996',
         price: 45.60,
         rating: 4.8,
         isAvailable: false,
+        sizes: { S: 0, M: 0,L:0,XL:0,XXL:0 }
     },
 ]
+
