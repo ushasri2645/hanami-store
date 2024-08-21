@@ -5,9 +5,11 @@ import styles from "./Cart.module.css";
 // import { data } from "../../Data/Data";
 import { ToastContainer, toast } from "react-toastify";
 import Navbar from "../Navbar/Navbar";
+import {useNavigate} from "react-router-dom"
 
 const Cart = () => {
     const [data, setData] = useState<TItem[]>([]);
+    const navigate = useNavigate()
     useEffect(() => {
         const fetchData = async () => {
           try {
@@ -96,6 +98,9 @@ const Cart = () => {
     return (
         <>
             <Navbar updateResults={() => {}} />
+            <div className={styles.goBack}>
+          <p onClick={() => navigate('/')}>🔙 Go Back</p>
+        </div>
             <ToastContainer />
             {cart.length === 0 ? <p className={styles.noCart}> Your cart feels very light! </p>:<>
             <h1 className={styles.title}>Cart({cart.length} items)</h1>
