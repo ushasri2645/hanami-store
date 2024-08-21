@@ -11,27 +11,25 @@ import { ToastContainer } from "react-toastify";
 import Navbar from "../Navbar/Navbar";
 import { TItem } from "../../Types/ItemType";
 
-
-
 const Product = () => {
     const [data, setData] = useState<TItem[]>([]);
     useEffect(() => {
         const fetchData = async () => {
-          try {
-            const response = await fetch('http://localhost:5050/api/items');
-            if (!response.ok) {
-              throw new Error('Network Issue');
+            try {
+                const response = await fetch("http://localhost:5050/api/items");
+                if (!response.ok) {
+                    throw new Error("Network Issue");
+                }
+                const result: TItem[] = await response.json();
+                setData(result);
+            } catch (error) {
+                console.error("Failed to fetch data:", error);
             }
-            const result: TItem[] = await response.json();
-            setData(result);
-          } catch (error) {
-            console.error('Failed to fetch data:', error);
-          } 
         };
-    
+
         fetchData();
-      }, []);
-      
+    }, []);
+
     const [selectedSize, setSelectedSize] = useState<string>("M");
     const navigate = useNavigate();
     const { id } = useParams();
@@ -58,19 +56,19 @@ const Product = () => {
         <>
             <ToastContainer />
             <Navbar updateResults={() => {}} />
+            <div className={styles.product}>
             <div className={styles.goBack}>
-          <p onClick={() => navigate('/')}>🔙 Go Back</p>
-        </div>
+                <p onClick={() => navigate("/")}>🔙 Go Back</p>
+            </div>
             <div className={styles.productContainer}>
-            
                 <div className={styles.topSection}>
                     <div>
                         <img className={styles.image} src={item?.image} />
                     </div>
                     <div className={styles.details}>
                         <h1>{item.name}</h1>
-                        <h4>{item.rating}⭐</h4>
-                        <h4>${item.price}</h4>
+                        <h4>Rating: {item.rating}⭐</h4>
+                        <h4>Price: ${item.price}</h4>
                         <div className={styles.sizes}>
                             {item.sizes &&
                                 Object.keys(item.sizes).map((size) => (
@@ -86,18 +84,7 @@ const Product = () => {
                                             });
                                         }}
                                         disabled={item.sizes[size] === 0}
-                                        className={`${styles.sizeButton} ${
-                                            isInCart
-                                                ? cart.find(
-                                                      (item) =>
-                                                          item.id === item.id
-                                                  )?.size === size
-                                                    ? styles.selected
-                                                    : ""
-                                                : selectedSize === size
-                                                ? styles.selected
-                                                : ""
-                                        }`}
+                                        className={`${styles.sizeButton} ${ selectedSize===size?styles.selected:''}`}
                                     >
                                         {size}
                                     </button>
@@ -116,6 +103,7 @@ const Product = () => {
                                                 size: selectedSize,
                                             });
                                             toast.success("Added to Cart");
+                                            // setSelectedSize(selectedSize)
                                         }
                                     }}
                                     className={styles.wishlist}
@@ -173,6 +161,7 @@ const Product = () => {
                     <h3>Description</h3>
                     <p>{item.description}</p>
                 </div>
+            </div>
             </div>
         </>
     );

@@ -125,3 +125,6 @@ h4 {
 .goBack:hover{
     cursor: pointer;
 }
+.product{
+    padding-top: 50px;
+}
