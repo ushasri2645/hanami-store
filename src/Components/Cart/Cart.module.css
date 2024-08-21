@@ -1,24 +1,30 @@
-/* Cart.module.css */
-.cartContainer {
-    padding: 20px;
+.cartContainer{
+    /* padding-top: 80px; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap:10%
+}
+.title{
+    text-align: center;
 }
 
 .cartItem {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    border:0.5px solid black;
+    border-radius: 8px;
+
 }
 
 .itemImage {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 280px;
     object-fit: cover;
     margin-right: 20px;
 }
 
-.itemDetails {
-    flex: 1;
-}
 
 .cartTotal {
     margin-top: 20px;
@@ -29,5 +35,97 @@
 .quantityControls{
     display: flex;
     flex-direction: row;
-    
+align-items: center;
+gap:1%
+
+}
+.paymentTitle{
+    text-align: center;
+}
+.incdecBtn{
+    background-color: lightcyan;
+    color: black;
+    width:20px;
+    height:20px;
+    border:0px
+}
+
+.sizeBtn{
+    color:black;
+    background-color: lightgreen;
+    border:0px;
+    height:20px;
+
+}
+
+.remove{
+    background-color: lightgreen;
+    border-radius: 5px;
+    padding: 10px 10px;
+    border:0;
+}
+
+.order{
+   
+    height:max-content;
+    width:150px;
+    margin-bottom: 20px;
+    background-color: lightgreen;
+    border: 0px;
+    border-radius: 5px;
+    font-size: 15px;
+    padding: 25px 25px 25px 25px;
+}
+.order:hover{
+    cursor: pointer;
+    background-color: darkgreen;
+    color:white
+}
+
+.priceOrderSection{
+    font-size: small;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 0.1px solid black;
+    box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 150%;
+    border-radius: 10px;
+}
+
+
+.green{
+    color:green
+}
+
+.subPrice{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.topSection{
+    width:30%;
+
+}
+
+
+.orderSection{
+    display: flex;
+    flex-direction: row;
+
+    gap:5%;
+}
+
+.priceBtn{
+    font-weight: bold;
+    height:max-content;
+    width:150px;
+    margin-bottom: 20px;
+    background-color: white;
+    border: 0.5px solid black;
+    border-radius: 5px;
+}
+.fontSmall{
+    font-size: 9px;
 }
