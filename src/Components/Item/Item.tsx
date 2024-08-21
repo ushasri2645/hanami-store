@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import salesStyles from "./SaleItem.module.css";
 import normalStyles from "./Item.module.css";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
@@ -8,17 +8,11 @@ import { TItem } from "../../Types/ItemType";
 import { CartContext } from "../../Context/Context";
 import { WishListContext } from "../../Context/Context";
 import { NotificationContext } from "../../Context/Context";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
-
-const IndividualItem = ({
-    item,
-}: {
-    item: TItem;
-}) => {
-    const navigate = useNavigate()
+const IndividualItem = ({ item }: { item: TItem }) => {
+    const navigate = useNavigate();
     const styles = item.offer ? salesStyles : normalStyles;
-    const [isClickedHeart, setIsClickedHeart] = useState(false);
 
     const cartContext = useContext(CartContext);
     const wishListContext = useContext(WishListContext);
@@ -33,34 +27,38 @@ const IndividualItem = ({
     const { notificationItems, Notificationdispatch } = notificationContext;
 
     const toggleHeart = () => {
-        setIsClickedHeart(!isClickedHeart);
-    };
-
-    const addToWishList = () => {
-        if (isClickedHeart) {
+        if (!wishlist.includes(item.id)) {
             WishListdispatch({ type: "ADD_TO_WISHLIST", item: item });
         } else {
             WishListdispatch({ type: "REMOVE_FROM_WISHLIST", id: item.id });
-
         }
     };
 
-    const handleCart = () => {
+    const addToWishList = () => {
+        toggleHeart();
+    };
 
+    const handleCart = () => {
         dispatch({ type: "ADD_TO_CART", item: item });
         toast.success("Added to Cart");
     };
+
     const updateNotificationStatus = () => {
         toast.success("Received request");
-        Notificationdispatch({type:"NOTIFY",id:item.id})
-
+        Notificationdispatch({ type: "NOTIFY", id: item.id });
     };
 
     return (
         <div className={!item.isAvailable ? styles.overlay : ""}>
             <div className={styles.item}>
                 {item.isNew && <span className={styles.badge}>New</span>}
-                <img onClick={()=>{navigate(`/product/${item.id}`)}} className={styles.itemimage} src={item.image} />
+                <img
+                    onClick={() => {
+                        navigate(`/product/${item.id}`);
+                    }}
+                    className={styles.itemimage}
+                    src={item.image}
+                />
                 <div className={styles.bottomsection}>
                     <p className={styles.name}>{item.name}</p>
                     <div className={styles.pricerating}>
@@ -74,7 +72,7 @@ const IndividualItem = ({
                             <div
                                 className={normalStyles.hearticon}
                                 onClick={() => {
-                                    toggleHeart();
+                                    // toggleHeart();
                                     addToWishList();
                                 }}
                             >
@@ -86,18 +84,17 @@ const IndividualItem = ({
                             </div>
                             <button className={styles.wishlist}>
                                 {cart.findIndex((i) => i.id === item.id) !==
-                                -1 ? 
+                                -1 ? (
                                     <p
                                         onClick={() => {
-                                            navigate('/cart');
+                                            navigate("/cart");
                                         }}
                                     >
                                         Go to Cart
                                     </p>
-                                 : 
+                                ) : (
                                     <p onClick={handleCart}>Add to Cart</p>
-                                    
-                                }
+                                )}
                             </button>
                         </div>
                     ) : (
@@ -105,7 +102,7 @@ const IndividualItem = ({
                             <div
                                 className={normalStyles.hearticon}
                                 onClick={() => {
-                                    toggleHeart();
+                                    // toggleHeart();
                                     addToWishList();
                                 }}
                             >
@@ -127,15 +124,19 @@ const IndividualItem = ({
                                     <p>
                                         {cart.findIndex(
                                             (i) => i.id === item.id
-                                        ) !== -1
-                                            ? ( <p
+                                        ) !== -1 ? (
+                                            <p
                                                 onClick={() => {
-                                                    navigate('/cart');
+                                                    navigate("/cart");
                                                 }}
                                             >
                                                 Go to Cart
-                                            </p>)
-                                            : <p onClick={handleCart}>Add to Cart</p>}
+                                            </p>
+                                        ) : (
+                                            <p onClick={handleCart}>
+                                                Add to Cart
+                                            </p>
+                                        )}
                                     </p>
                                 ) : (
                                     <p
