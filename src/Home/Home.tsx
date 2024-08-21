@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Navbar from "../Components/Navbar/Navbar";
 import Items from "../Components/Items/Items";
-import { data } from "../Data/Data";
 import { TItem } from "../Types/ItemType";
 import { ToastContainer} from "react-toastify";
 
@@ -18,11 +17,6 @@ const Home = () => {
         );
         setQueryResults(filteredResults);
       });
-    // setQueryResults(
-    //   data.filter((item) =>
-    //     item.name.toLowerCase().includes(searchQuery.toLowerCase())
-    //   )
-    // );
   };
 
 
@@ -30,7 +24,7 @@ const Home = () => {
     <div>
       <ToastContainer
         position="bottom-right"
-        autoClose={3000}
+        autoClose={2000}
         theme="colored"
         pauseOnHover
       />
