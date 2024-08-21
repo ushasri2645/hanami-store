@@ -5,7 +5,6 @@ import React, {
     useReducer,
     useState,
 } from "react";
-import { data } from "../Data/Data";
 import { TItem } from "../Types/ItemType";
 
 type cartContextType = {
@@ -125,7 +124,7 @@ const ContextProvider = ({ children }: { children: any }) => {
     const [queryResults, setQueryResults] = useState<TItem[]>([]);
     const updateResults = (searchQuery: string) => {
         setQueryResults(
-            data.filter((item) =>
+            queryResults.filter((item) =>
                 item.name.toLowerCase().includes(searchQuery.toLowerCase())
             )
         );
