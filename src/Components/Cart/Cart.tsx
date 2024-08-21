@@ -1,12 +1,29 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CartContext, dataContext } from "../../Context/Context";
 import { TItem } from "../../Types/ItemType";
 import styles from "./Cart.module.css";
-import { data } from "../../Data/Data";
+// import { data } from "../../Data/Data";
 import { ToastContainer, toast } from "react-toastify";
 import Navbar from "../Navbar/Navbar";
 
 const Cart = () => {
+    const [data, setData] = useState<TItem[]>([]);
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const response = await fetch('http://localhost:5050/api/items');
+            if (!response.ok) {
+              throw new Error('Network Issue');
+            }
+            const result: TItem[] = await response.json();
+            setData(result);
+          } catch (error) {
+            console.error('Failed to fetch data:', error);
+          } 
+        };
+    
+        fetchData();
+      }, []);
     const cartContext = useContext(CartContext);
     const DC = useContext(dataContext);
 
