@@ -43,7 +43,7 @@ This is Web App of Hanami Store.
     ```sh
     npm start
     ```
-4. 
+ 
 ### API Endpoints
 1. POST Request to create data.
     ```sh
