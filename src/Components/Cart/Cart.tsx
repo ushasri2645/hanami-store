@@ -6,6 +6,9 @@ import styles from "./Cart.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import Navbar from "../Navbar/Navbar";
 import {useNavigate} from "react-router-dom"
+import { confirmAlert as showConfirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
+
 
 const Cart = () => {
     const [data, setData] = useState<TItem[]>([]);
@@ -70,13 +73,25 @@ const Cart = () => {
         }, 0);
     };
     const handleRemove = (id: number) => {
-        const itemc = cart.find((item) => item.id === item.id);
-        if (
-            window.confirm("Do you want to remove this product from the cart?")
-        ) {
-            dispatch({ type: "REMOVE_FROM_CART", id });
-            toast.success("Removed From Cart");
-        }
+        showConfirmAlert({
+            title: 'Confirm to delete',
+            message: 'Are you sure you want to delete this item?',
+            buttons: [
+                {
+                    label: 'Yes',
+                    onClick: () => {
+                        dispatch({ type: "REMOVE_FROM_CART", id });
+                        toast.success("Removed From Cart");
+                    }
+                },
+                {
+                    label: 'No',
+                    onClick: () => {
+                        console.log('Deletion canceled');
+                    }
+                }
+            ]
+        });
     };
     const handleDecrement = (id: number, quantity: number) => {
         console.log(quantity);
@@ -129,11 +144,15 @@ const Cart = () => {
                                         </button>
                                         <button
                                             className={styles.incdecBtn}
-                                            onClick={() =>
+                                            onClick={() =>{
+                                                if(cartItem.quantity==1){
+                                                    handleRemove(cartItem.id)
+                                                }
+                                                else{
                                                 handleDecrement(
                                                     cartItem.id,
                                                     cartItem.quantity
-                                                )
+                                                )}}
                                             }
                                         >
                                             -
@@ -233,3 +252,7 @@ const Cart = () => {
 };
 
 export default Cart;
+function confirmAlert(arg0: { title: string; message: string; buttons: { label: string; onClick: () => void; }[]; }) {
+    throw new Error("Function not implemented.");
+}
+
