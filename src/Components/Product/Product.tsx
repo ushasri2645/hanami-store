@@ -58,7 +58,11 @@ const Product = () => {
         <>
             <ToastContainer />
             <Navbar updateResults={() => {}} />
+            <div className={styles.goBack}>
+          <p onClick={() => navigate('/')}>🔙 Go Back</p>
+        </div>
             <div className={styles.productContainer}>
+            
                 <div className={styles.topSection}>
                     <div>
                         <img className={styles.image} src={item?.image} />
