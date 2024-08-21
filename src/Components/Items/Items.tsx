@@ -25,7 +25,8 @@ const Items = ({
   return (
     <>
     <div>
-          <h1 className={styles.title}>{title}</h1>
+
+        <h1 className={title!=="Our Products" ? styles.Salestitle : styles.title}>{title}</h1>
           {title!=='Our Products' && (<p className={styles.description}>Get in on the trend with our curated selection of best-selling styles</p>)}
         </div>
     <div className={styles.itemsContainer}>

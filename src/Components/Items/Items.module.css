@@ -20,4 +20,10 @@
     color:rgb(13, 93, 13);
     font-weight: bold;
  }
- 
+ .Salestitle{
+    text-align: center;
+    font-family: 'serif';
+    color:rgb(13, 93, 13);
+    font-weight: 900;
+    padding-top: 65px;
+ }
