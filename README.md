@@ -8,6 +8,10 @@ This is Web App of Hanami Store.
 * Cart management.
 * Can add products to Wishlist. 
 * Toast notifications.
+* Can View the items in cart.
+* Increase, Decrease quanity of item from cart and can remove item from cart.
+* Individual product page with various sizes to add to cart.
+* Payment Details including discount calculation in cart page.
 
 ## Technologies Used
 
