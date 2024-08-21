@@ -8,4 +8,5 @@ export type TItem = {
     isNew?:boolean,
     offer?:number,
     sizes: { [key: string]: number };
+    description:string;
 }
