@@ -61,13 +61,13 @@
     width: 50px;
     border-radius:10px;
 }
-
+/* 
 .cartIcon{
     position: sticky;
     overflow: hidden;
     top:0;
     z-index: 1000;
-}
+} */
 
 .cart{
     display: flex;
