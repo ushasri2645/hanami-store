@@ -80,7 +80,7 @@ const Cart = () => {
         <>
             <Navbar updateResults={() => {}} />
             <ToastContainer />
-            {cart.length === 0 && <p>Your cart feels very light! </p>}
+            {cart.length === 0 ? <p className={styles.noCart}> Your cart feels very light! </p>:<>
             <h1 className={styles.title}>Cart({cart.length} items)</h1>
             <div className={styles.cartContainer}>
            
@@ -205,6 +205,7 @@ const Cart = () => {
                     )}
                 </div>
             </div>
+            </>}
         </>
     );
 };

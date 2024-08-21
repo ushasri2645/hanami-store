@@ -18,6 +18,11 @@
 
 }
 
+.noCart{
+    text-align: center;
+    font-size: 20px;
+}
+
 .itemImage {
     width: 150px;
     height: 280px;
