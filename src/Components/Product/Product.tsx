@@ -2,15 +2,36 @@ import { useParams, useNavigate } from "react-router-dom";
 import { CartContext } from "../../Context/Context";
 import { useContext, useEffect, useState } from "react";
 import { WishListContext } from "../../Context/Context";
-import { data } from "../../Data/Data";
+// import { data } from "../../Data/Data";
 import styles from "./Product.module.css";
 import { toast } from "react-toast";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { NotificationContext } from "../../Context/Context";
 import { ToastContainer } from "react-toastify";
 import Navbar from "../Navbar/Navbar";
+import { TItem } from "../../Types/ItemType";
+
+
 
 const Product = () => {
+    const [data, setData] = useState<TItem[]>([]);
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const response = await fetch('http://localhost:5050/api/items');
+            if (!response.ok) {
+              throw new Error('Network Issue');
+            }
+            const result: TItem[] = await response.json();
+            setData(result);
+          } catch (error) {
+            console.error('Failed to fetch data:', error);
+          } 
+        };
+    
+        fetchData();
+      }, []);
+      
     const [selectedSize, setSelectedSize] = useState<string>("M");
     const navigate = useNavigate();
     const { id } = useParams();
@@ -146,7 +167,7 @@ const Product = () => {
                 </div>
                 <div className={styles.description}>
                     <h3>Description</h3>
-                    <p>{item?.name}</p>
+                    <p>{item.description}</p>
                 </div>
             </div>
         </>
