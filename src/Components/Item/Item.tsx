@@ -72,7 +72,6 @@ const IndividualItem = ({ item }: { item: TItem }) => {
                             <div
                                 className={normalStyles.hearticon}
                                 onClick={() => {
-                                    // toggleHeart();
                                     addToWishList();
                                 }}
                             >
@@ -82,19 +81,9 @@ const IndividualItem = ({ item }: { item: TItem }) => {
                                     <AiOutlineHeart color="black" size={25} />
                                 )}
                             </div>
-                            <button className={styles.wishlist}>
-                                {cart.findIndex((i) => i.id === item.id) !==
-                                -1 ? (
-                                    <p
-                                        onClick={() => {
-                                            navigate("/cart");
-                                        }}
-                                    >
-                                        Go to Cart
-                                    </p>
-                                ) : (
+                            <button className={styles.wishlist}>{cart.findIndex((i) => i.id === item.id) !==-1 ? <p onClick={() => {navigate("/cart");}}> Go to Cart</p> : 
                                     <p onClick={handleCart}>Add to Cart</p>
-                                )}
+                                }
                             </button>
                         </div>
                     ) : (
@@ -102,7 +91,6 @@ const IndividualItem = ({ item }: { item: TItem }) => {
                             <div
                                 className={normalStyles.hearticon}
                                 onClick={() => {
-                                    // toggleHeart();
                                     addToWishList();
                                 }}
                             >
