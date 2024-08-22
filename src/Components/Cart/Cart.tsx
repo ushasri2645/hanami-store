@@ -344,10 +344,3 @@ const Cart = () => {
 };
 
 export default Cart;
-function confirmAlert(arg0: {
-    title: string;
-    message: string;
-    buttons: { label: string; onClick: () => void }[];
-}) {
-    throw new Error("Function not implemented.");
-}
