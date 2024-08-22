@@ -12,23 +12,6 @@ import Navbar from "../Navbar/Navbar";
 import { TItem } from "../../Types/ItemType";
 
 const Product = () => {
-    const [data, setData] = useState<TItem[]>([]);
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch("http://localhost:5050/api/items");
-                if (!response.ok) {
-                    throw new Error("Network Issue");
-                }
-                const result: TItem[] = await response.json();
-                setData(result);
-            } catch (error) {
-                console.error("Failed to fetch data:", error);
-            }
-        };
-
-        fetchData();
-    }, []);
     const [item, setItem] = useState<TItem>();
     useEffect(() => {
         const fetchProduct = async () => {
