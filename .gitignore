@@ -6,6 +6,8 @@
 .pnp.js
 /Backend/node_modules/
 /Backend/package-lock.json
+/BackendHanami/node_modules
+/BackendHanami/package-lock.json
 
 # testing
 /coverage
