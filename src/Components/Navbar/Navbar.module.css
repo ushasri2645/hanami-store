@@ -8,6 +8,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+    z-index:1000
 }
 .storeName{
     font-family: 'Roboto';
