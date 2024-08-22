@@ -38,7 +38,7 @@ This is Web App of Hanami Store.
 ### Run Backend
 1. Navigate to the Backend directory:
     ```sh
-    cd <repo_name>/Backend
+    cd <repo_name>/BackendHanami
     ```
 2. Install the dependencies:
     ```sh
@@ -52,7 +52,7 @@ This is Web App of Hanami Store.
 ### API Endpoints
 1. POST Request to create data.
     ```sh
-    POST /api/items
+    POST /api/items i.e., http://localhost:5050/api/items
     ```
 
 2. GET Request to fetch data.
