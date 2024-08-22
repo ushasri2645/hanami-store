@@ -29,6 +29,23 @@ const Product = () => {
 
         fetchData();
     }, []);
+    const [item, setItem] = useState<TItem>();
+    useEffect(() => {
+        const fetchProduct = async () => {
+            try {
+                const response = await fetch(`http://localhost:5050/api/items/${id}`);
+                if (!response.ok) {
+                    throw new Error("Network Issue");
+                }
+                const result: TItem = await response.json();
+                setItem(result);
+            } catch (error) {
+                console.error("Failed to fetch data:", error);
+            }
+        };
+
+        fetchProduct();
+    }, []);
 
     const [selectedSize, setSelectedSize] = useState<string>("M");
     const navigate = useNavigate();
@@ -40,8 +57,6 @@ const Product = () => {
     if (!id || !cartContext || !wlContext || !notificationContext) {
         return <>Context Not Found</>;
     }
-
-    const item = data.find((item) => item.id === parseInt(id));
     if (!item) {
         return <>Item Not Found</>;
     }
