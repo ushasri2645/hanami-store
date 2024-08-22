@@ -20,6 +20,7 @@ This is Web App of Hanami Store.
 * `react-toastify` for notifications
 * CSS Modules for styling.
 * `react-confirm-alert` for alerts
+* MONGO DB for backend
 
 ## Installation
 
