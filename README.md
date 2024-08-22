@@ -19,6 +19,7 @@ This is Web App of Hanami Store.
 * TypeScript
 * `react-toastify` for notifications
 * CSS Modules for styling.
+* `react-confirm-alert` for alerts
 
 ## Installation
 
@@ -111,3 +112,5 @@ This is Web App of Hanami Store.
 # DEMO
 
 ![UI Image](<public/assests/image.png>)
+![alt text](cart-1.png) 
+![alt text](product-1.png)
