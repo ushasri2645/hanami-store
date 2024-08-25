@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { WishListContext } from "../../Context/Context";
 // import { data } from "../../Data/Data";
 import styles from "./Product.module.css";
-import { toast } from "react-toast";
+import { toast } from "react-toastify";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { NotificationContext } from "../../Context/Context";
 import { ToastContainer } from "react-toastify";
@@ -30,6 +30,25 @@ const Product = () => {
         fetchProduct();
     }, []);
 
+    useEffect(() => {
+        if (item && item.sizes["M"] === 0) {
+            const allSizes = ["S", "M", "L", "XL", "XXL"];
+            let sizeFound = false;
+
+            for (let size of allSizes) {
+                if (item.sizes[size] > 0) {
+                    setSelectedSize(size);
+                    sizeFound = true;
+                    break;
+                }
+            }
+
+            if (!sizeFound) {
+                setSelectedSize('');
+            }
+        }
+    }, [item]);
+    
     const [selectedSize, setSelectedSize] = useState<string>("M");
     const navigate = useNavigate();
     const { id } = useParams();
@@ -52,7 +71,7 @@ const Product = () => {
 
     return (
         <>
-            <ToastContainer />
+           <ToastContainer />
             <Navbar updateResults={() => {}} />
             <div className={styles.product}>
             <div className={styles.goBack}>
@@ -114,11 +133,13 @@ const Product = () => {
                                         item.id
                                     )}
                                     onClick={() => {
+                                        toast.success('We\'ll Notify');
                                         Notificationdispatch({
                                             type: "NOTIFY",
                                             id: item.id,
                                         });
-                                        toast.warn("We'll Notify");
+                                        console.log("HI")
+                                        
                                     }}
                                 >
                                     Notify Me
