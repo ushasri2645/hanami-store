@@ -34,7 +34,6 @@ const Product = () => {
         if (item && item.sizes["M"] === 0) {
             const allSizes = ["S", "M", "L", "XL", "XXL"];
             let sizeFound = false;
-
             for (let size of allSizes) {
                 if (item.sizes[size] > 0) {
                     setSelectedSize(size);
@@ -42,7 +41,6 @@ const Product = () => {
                     break;
                 }
             }
-
             if (!sizeFound) {
                 setSelectedSize('');
             }
