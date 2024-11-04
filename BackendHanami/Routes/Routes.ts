@@ -9,7 +9,7 @@ export const router = express.Router()
 
 const app = express();
 app.use(cors());
-const port = 5050;
+const port = process.env.PORT|| 5050;
 
 app.use(bodyParser.json());
 app.use('/api', router);
