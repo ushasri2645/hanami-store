@@ -1,3 +1,4 @@
 import mongoose, { Connection } from "mongoose";
-export const config: Connection = mongoose.createConnection('mongodb://localhost/mongoDB1');
+const URL = process.env.MONGODB_URI || 'mongodb://localhost/mongoDB1'
+export const config: Connection = mongoose.createConnection(URL);
 console.log("Connected")
