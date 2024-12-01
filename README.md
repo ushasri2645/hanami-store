@@ -13,7 +13,7 @@ Instructions to install and Run the project
 
 2. Navigate to the project directory:
     ```sh
-    cd <repo_name>
+    cd hanami-store-1
     ```
 
 3. Install the dependencies:
